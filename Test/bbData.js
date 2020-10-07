@@ -17,25 +17,45 @@ reversedIDs = reversedIDs.map(id=>"OTU " + id.toString());
 console.log(reversedData);
 console.log(reversedIDs);
 
-// Trace1 for the Greek Data
-var trace1 = {
-    x: reversedData,
-    y: reversedIDs,
-    text: reversedIDs,
-    name: "BB Bacteria",
-    type: "bar",
-    orientation: "h"
-  };
+// // Trace1 for the Bar Data
+// var trace1 = {
+//     x: reversedData,
+//     y: reversedIDs,
+//     text: reversedIDs,
+//     name: "BB Bacteria",
+//     type: "bar",
+//     orientation: "h"
+//   };
   
-  // data
-  var data = [trace1];
+//   // data
+//   var data = [trace1];
   
-  // Apply the group bar mode to the layout
-  var layout = {
-    title: "Belly Button Bacteria",
+//   // Apply the group bar mode to the layout
+//   var layout = {
+//     title: "Belly Button Bacteria",
 
-    
+//   };
+
+  var trace = {
+    x: otu_ids,
+    y: sample_values,
+    text: otu_labels,
+    mode: 'markers',
+    marker: {
+      color: otu_ids,
+      size: sample_values
+    }
   };
+  
+  var data = [trace];
+  
+  var layout = {
+    title: 'Marker Size',
+    showlegend: false,
+    height: 600,
+    width: 600
+  };
+  
   
   // Render the plot to the div tag with id "plot"
   Plotly.newPlot("plot", data, layout);

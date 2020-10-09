@@ -14,73 +14,93 @@ d3.json('samples.json').then(data => {
         .attr("value", d => d)
         .text(d => d)
 
+    d3.selectAll("body").on("change", updateMetadata)
+    
+    function init() {
+        // Default list of metadata using first personID
+        for (const [key, value] of Object.entries(metadata[0])) {
+            d3.select("ul").append("li").text(`${key}: ${value}`);
+        };
+    };
 
-// function init() {
-    // List of meta data for the selected person ID
-    for (const [key, value] of Object.entries(metadata[0])) {
-        d3.select("ul").append("li").text(`${key}: ${value}`);
-    }
+    //     // Default plots using the first entries
+    //     updateBar(samples[0]);
+    //     updateBubble(samples[0])
+    // }
+    console.log(metadata);
 
+    function updateMetadata() {
+        let selectedID = d3.select("#selDataset").property("value")
+        console.log(metadata);
+        for (i = 0; i < metadata.length; i++){
+           
+            if (metadata[i].id === selectedID) {
+                for (const [key, value] of Object.entries(metadata[i])) {
+                    d3.select("ul").append("li").text(`${key}: ${value}`);
+                };
+            };
+        };
+    };
 // //     updateBar(newdata);
 // //     updateBubble(newdata);
 // // };
   
-// // function updateBar(newdata) {
-    // Make the bar chart of the top ten bacteria from the person ID
-    // Slice the first 10 objects for plotting
-    let slicedData = samples[0].sample_values.slice(0, 10);
-    let slicedIDs = samples[0].otu_ids.slice(0, 10);
+// //  function updateBar(newdata) {
+//     // Make the bar chart of the top ten bacteria from the person ID
+//     // Slice the first 10 objects for plotting
+//     let slicedData = samples[0].sample_values.slice(0, 10);
+//     let slicedIDs = samples[0].otu_ids.slice(0, 10);
 
-    // Reverse the array to accommodate Plotly's defaults
-    let reversedData = slicedData.reverse();
-    let reversedIDs = slicedIDs.reverse();
-    reversedIDs = reversedIDs.map(id=>"OTU " + id.toString());
+//     // Reverse the array to accommodate Plotly's defaults
+//     let reversedData = slicedData.reverse();
+//     let reversedIDs = slicedIDs.reverse();
+//     reversedIDs = reversedIDs.map(id=>"OTU " + id.toString());
 
-    // Trace for the Bar Data
-    var barTrace = {
-        x: reversedData,
-        y: reversedIDs,
-        text: reversedIDs,
-        name: "BB Bacteria",
-        type: "bar",
-        orientation: "h"
-    };
+//     // Trace for the Bar Data
+//     var barTrace = {
+//         x: reversedData,
+//         y: reversedIDs,
+//         text: reversedIDs,
+//         name: "BB Bacteria",
+//         type: "bar",
+//         orientation: "h"
+//     };
     
-    // Bar Data
-    var barData = [barTrace];
+//     // Bar Data
+//     var barData = [barTrace];
     
-    // Apply the group bar mode to the layout
-    var barLayout = {
-        title: "Top Ten Bacteri",
-    };
+//     // Apply the group bar mode to the layout
+//     var barLayout = {
+//         title: "Top Ten Bacteri",
+//     };
 
-    Plotly.newPlot("bar", barData, barLayout);
+//     Plotly.newPlot("bar", barData, barLayout);
+// // // };
+
+// // // function updateBubble(newdata) {
+// //    // Make the bubble chart of the top ten bacteria  from the person ID
+//     var bubbleTrace = {
+//         x: samples[0].otu_ids,
+//         y: samples[0].sample_values,
+//         text: samples[0].otu_labels,
+//         mode: 'markers',
+//         marker: {
+//         color: samples[0].otu_ids,
+//         size: samples[0].sample_values
+//         }
+//     };
+    
+//     var bubbleData = [bubbleTrace];
+    
+//     var bubbleLayout = {
+//         title: 'Count of Bacteria Strains',
+//         showlegend: false,
+//         height: 600,
+//         width: 600
+//     };
+
+//     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 // // };
-
-// // function updateBubble(newdata) {
-//    // Make the bubble chart of the top ten bacteria  from the person ID
-    var bubbleTrace = {
-        x: samples[0].otu_ids,
-        y: samples[0].sample_values,
-        text: samples[0].otu_labels,
-        mode: 'markers',
-        marker: {
-        color: samples[0].otu_ids,
-        size: samples[0].sample_values
-        }
-    };
-    
-    var bubbleData = [bubbleTrace];
-    
-    var bubbleLayout = {
-        title: 'Count of Bacteria Strains',
-        showlegend: false,
-        height: 600,
-        width: 600
-    };
-
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-// };
 
 // // On change to the DOM, call getData()
 // // d3.selectAll("#selDataset").on("change", getData);
@@ -164,6 +184,6 @@ d3.json('samples.json').then(data => {
 // //     Plotly.restyle("plot", "y", [y]);
 // //   }
   
-// init();
+    init();
 
 }); // end of promise

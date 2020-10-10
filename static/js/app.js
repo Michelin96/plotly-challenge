@@ -27,20 +27,31 @@ d3.json('samples.json').then(data => {
     //     updateBar(samples[0]);
     //     updateBubble(samples[0])
     // }
-    console.log(metadata);
+    //console.log(metadata);
+
+ 
+
+
 
     function updateMetadata() {
         let selectedID = d3.select("#selDataset").property("value")
-        console.log(metadata);
-        for (i = 0; i < metadata.length; i++){
-           
-            if (metadata[i].id === selectedID) {
-                for (const [key, value] of Object.entries(metadata[i])) {
-                    d3.select("ul").append("li").text(`${key}: ${value}`);
-                };
-            };
+        d3.select("ul").html("");
+        for (const [key, value] of Object.entries(metadata[3])) {
+            d3.select("ul").append("li").text(`${key}: ${value}`);
         };
     };
+
+        // console.log(selectedID)
+        // for (let i = 0; i < metadata.length; i++){
+        //     console.log(metadata[i].id)
+        //     if (metadata[i].id === selectedID) {
+        //         console.log(metadata[i])
+        //         metadata.forEach(Object.entries(metadata[i]))
+        //             d3.select("ul").append("li").text(`${key}: ${value}`);
+        //         };
+        //     };
+        // };
+    
 // //     updateBar(newdata);
 // //     updateBubble(newdata);
 // // };

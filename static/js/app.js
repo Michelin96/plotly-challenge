@@ -35,12 +35,21 @@ d3.json('samples.json').then(data => {
 
     function updateMetadata() {
         let selectedID = d3.select("#selDataset").property("value")
+        
+        // Clear the metatdata list
         d3.select("ul").html("");
-        for (const [key, value] of Object.entries(metadata[3])) {
-            d3.select("ul").append("li").text(`${key}: ${value}`);
+
+        for (item in metadata ){
+            console.log(metadata[item].id)
+            if (metadata[item].id == selectedID){
+                console.log("Found a match")
+                for (const [key, value] of Object.entries(metadata[item])) {
+                    d3.select("ul").append("li").text(`${key}: ${value}`);
+                };
+            };
         };
     };
-
+        
         // console.log(selectedID)
         // for (let i = 0; i < metadata.length; i++){
         //     console.log(metadata[i].id)

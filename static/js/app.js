@@ -14,7 +14,6 @@ d3.json('samples.json').then(data => {
         .attr("value", d => d)
         .text(d => d)
         
-
     // When a new item is selected, change the demographics and plots
     d3.selectAll("body").on("change", getData)
 
@@ -69,9 +68,7 @@ d3.json('samples.json').then(data => {
         
         var bubbleLayout = {
             title: 'Count of Bacteria Strains',
-            showlegend: false,
-            height: 600,
-            width: 600
+            showlegend: false
         };
     
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);

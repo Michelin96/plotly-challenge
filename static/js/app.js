@@ -79,7 +79,7 @@ d3.json('samples.json').then(data => {
         let selectedID = d3.select("#selDataset").property("value")
         // Clear the demographic list
         d3.select("ul").html("");
-        // Search metadata for a selection match and change demographics list
+        // Search metadata for the matcht to the selection and change demographics list
         for (item in metadata ){
             if (metadata[item].id == selectedID){
                 for (const [key, value] of Object.entries(metadata[item])) {
@@ -130,7 +130,7 @@ d3.json('samples.json').then(data => {
 
     function updateBubble() {
         let selectedID = d3.select("#selDataset").property("value")
-        // Search metadata for a selection match and change demographics list
+        // Search samples for the matcht to the selection and change demographics list
         for (item in samples ){
             if (samples[item].id == selectedID){
             // Make the bubble chart of all the bacteri from the person ID

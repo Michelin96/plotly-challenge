@@ -68,11 +68,15 @@ d3.json('samples.json').then(data => {
         
         var bubbleLayout = {
             title: 'Count of Bacteria Strains',
-            showlegend: false
+            showlegend: false,
+            xaxis: {
+                title: {
+                    text: 'OTU ID'
+                }
+            },
         };
-    
+
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-    
     };
 
     function updateMetadata() {
@@ -88,7 +92,7 @@ d3.json('samples.json').then(data => {
             };
         };
     };
-  
+
     function updateBar() {
         let selectedID = d3.select("#selDataset").property("value")
 
@@ -150,8 +154,11 @@ d3.json('samples.json').then(data => {
                 var bubbleLayout = {
                     title: 'Count of Bacteria Strains',
                     showlegend: false,
-                    height: 600,
-                    width: 600
+                    xaxis: {
+                        title: {
+                            text: 'OTU ID'
+                        }
+                    },
                 };
             };
         };
@@ -165,7 +172,7 @@ d3.json('samples.json').then(data => {
         updateBar();
         updateBubble();
     };
-  
+
     init();
 
 }); // end of promise

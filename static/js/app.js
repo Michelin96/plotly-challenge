@@ -67,7 +67,7 @@ d3.json('samples.json').then(data => {
         var bubbleData = [bubbleTrace];
         
         var bubbleLayout = {
-            title: 'Count of Bacteria Strains',
+            title: 'Count of Each Bacteria Strain',
             showlegend: false,
             xaxis: {
                 title: {
@@ -152,7 +152,7 @@ d3.json('samples.json').then(data => {
                 var bubbleData = [bubbleTrace];
                 
                 var bubbleLayout = {
-                    title: 'Count of Bacteria Strains',
+                    title: 'Count of Each Bacteria Strain',
                     showlegend: false,
                     xaxis: {
                         title: {

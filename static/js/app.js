@@ -47,7 +47,7 @@ d3.json('samples.json').then(data => {
         
         // Apply the group bar mode to the layout
         var barLayout = {
-            title: "Top Ten Bacteri",
+            title: "Top Ten Bacteria",
         };
 
         Plotly.newPlot("bar", barData, barLayout);
@@ -124,7 +124,7 @@ d3.json('samples.json').then(data => {
                 
                 // Apply the group bar mode to the layout
                 var barLayout = {
-                    title: "Top Ten Bacteri",
+                    title: "Top Ten Bacteria",
                 };
 
                 Plotly.newPlot("bar", barData, barLayout);
